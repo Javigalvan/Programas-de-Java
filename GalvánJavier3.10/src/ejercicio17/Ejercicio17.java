@@ -13,19 +13,17 @@ public class Ejercicio17 {
         int[] valores2 = new int[10];
         int n;
 
-        System.out.println("Introduce los primeros 10 valores:");
+        int[] valores1 = new int[10];
+        int[] valores2 = new int[10];
+        int n;
 
-        // Llenamos el primer array
+
         for (int i = 0; i < 10; i++) {
             System.out.print("Valor " + (i + 1) + ": ");
             n = entrada.nextInt();
-            // Usamos Arrays.fill para llenar SOLO la posición i
             Arrays.fill(valores1, i, i + 1, n);
         }
 
-        System.out.println("\nIntroduce los siguientes 10 valores:");
-
-        // Llenamos el segundo array
         for (int i = 0; i < 10; i++) {
             System.out.print("Valor " + (i + 11) + ": ");
             n = entrada.nextInt();
@@ -36,12 +34,13 @@ public class Ejercicio17 {
         System.out.println("Segundo array: " + Arrays.toString(valores2));
 
         if (Arrays.equals(valores1, valores2)) {
-            System.out.println("\n✅ Son iguales");
+            System.out.println("Son iguales");
         } else {
-            System.out.println("\n❌ No son iguales");
+            System.out.println("No son iguales");
         }
         
         
 	}
 
 }
+
