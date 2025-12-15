@@ -61,7 +61,7 @@ public class Ejercicio8 {
 			
 			if (distancia > distanciaMax) {
                 distanciaMax = distancia;
-                ciudadMax = ciudad;			
+                ciudadMax = ciudad;	
 			}
 		}
 		

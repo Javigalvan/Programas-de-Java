@@ -12,10 +12,7 @@ public class Ejercicio17 {
 		int[] valores1 = new int[10];
         int[] valores2 = new int[10];
         int n;
-
-        int[] valores1 = new int[10];
-        int[] valores2 = new int[10];
-        int n;
+        
 
 
         for (int i = 0; i < 10; i++) {
