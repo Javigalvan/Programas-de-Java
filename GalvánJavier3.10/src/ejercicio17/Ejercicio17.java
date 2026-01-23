@@ -14,7 +14,6 @@ public class Ejercicio17 {
         int n;
         
 
-
         for (int i = 0; i < 10; i++) {
             System.out.print("Valor " + (i + 1) + ": ");
             n = entrada.nextInt();

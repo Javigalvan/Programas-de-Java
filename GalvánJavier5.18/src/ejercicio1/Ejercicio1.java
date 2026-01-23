@@ -86,8 +86,26 @@ public class Ejercicio1 {
 		}
 		
 	//5
+		System.out.printf("%n");
+		//5.1
+		System.out.printf("Potencia de la bombilla: %s W %n", bombilla1.getPotencia());
+		//5.2
+		System.out.printf("Estado de la bombilla: %s%n", bombilla1.getEstado());
+		//5.3
+		System.out.printf("Última vez que se encendió la bombilla: %s%n", bombilla1.getUltimaVezEncendida());
+		//5.4
+		System.out.printf("Número de veces encendida: %s%n", bombilla1.getVecesEncendida());
+		//5.5
+		System.out.printf("Tiempo que lleva encendida: %s segundos %n", bombilla1.getTiempoEncendida());
+		//5.6
+		System.out.printf("Potencia consumida: %s W %n", bombilla1.getPotenciaConsumida());
 		
-		
+	//6
+		System.out.printf("%n");
+		//6.1
+		System.out.printf("Hay %s bombillas creadas %n", Bombilla.getBombillasCreadas());
+		//6.2
+		System.out.printf("Hay %s bombillas encendidas %n", Bombilla.getBombillasCreadas());
 		
 	}
 

@@ -11,8 +11,7 @@ public class Ejercicio3 {
 	public static String indicaMesDias (int mes) {
 		String[] nombresMes = {
 		        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-		        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-		    };
+		        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
 		
 		int[] diasMes = {
 		        31, 28, 31, 30, 31, 30,

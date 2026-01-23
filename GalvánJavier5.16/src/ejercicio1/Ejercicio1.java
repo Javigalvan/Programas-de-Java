@@ -24,10 +24,9 @@ public class Ejercicio1 {
 			try {
 				double saldoInicial = 100;
 				LocalDate fechaCreacion = LocalDate.of(1, 9, 2027);
-				CuentaBancaria cuenta1 = new CuentaBancaria(saldoInicial, fechaCreacion);
-			
+				CuentaBancaria cuenta1 = new CuentaBancaria(saldoInicial, fechaCreacion);			
 			} catch (IllegalArgumentException ExcepcionFecha) {
-				System.out.printf("ERROR, F	echa inválida: %s%n", ExcepcionFecha.getMessage());				
+				System.out.printf("ERROR, Fecha inválida: %s%n", ExcepcionFecha.getMessage());				
 			} catch (DateTimeException ExcepcionFecha) {
 				 System.out.printf("ERROR, Fecha inválida: %s%n", ExcepcionFecha.getMessage());	
 			}
@@ -36,8 +35,7 @@ public class Ejercicio1 {
 			//2.2
 			try {
 				double saldoInicial = -200;
-				CuentaBancaria cuenta2 = new CuentaBancaria(saldoInicial);
-				
+				CuentaBancaria cuenta2 = new CuentaBancaria(saldoInicial);				
 			} catch (IllegalArgumentException ExcepcionSaldo){
 				System.out.printf("ERROR, Saldo inválido: %s%n", ExcepcionSaldo.getMessage());
 				}
