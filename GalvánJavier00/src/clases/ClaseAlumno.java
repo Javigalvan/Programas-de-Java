@@ -81,7 +81,6 @@ public static boolean dniCorrecto (String dni) {
 		return dniValido= false;
 	}
 	
-	
 }
 
 public ClaseAlumno (String dni, String nombre, String apellidos) throws IllegalArgumentException {
@@ -95,11 +94,6 @@ public ClaseAlumno () {
 	this (DNI_DEFAULT, NOMBRE_DEFAULT, APELLIDOS_DEFAULT, FECHA_NACIMIENTO_DEFAULT, PESO_DEFAULT, ALTURA_DEFAULT, NUMALUMNOS_DEFAULT,NUMMAXALUMNOS_DEFAULT 
 			, NUMHERMANOS_DEFAULT , MAYOREDAD_DEFAULT, HORAMAXIMA_DEFAULT, HORAMINIMA_DEFAULT );
 }
-
-
-
-
-
 
 
 }
