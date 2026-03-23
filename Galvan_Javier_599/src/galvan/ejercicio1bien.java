@@ -26,7 +26,7 @@ public class ejercicio1bien {
 		        for (int i = 0; i < ventas.length; i++) {
 		            for (int j = 0; j < ventas[i].length; j++) {
 		                // múltiplos de 500 entre 1000 y 20000
-		                ventas[i][j] = (random.nextInt(39) + 2) * 500;
+		                ventas[i][j] = (random.nextInt(39) + 2) * 500; //(int)(Math.random() * 39 + 2) * 500;
 		            }
 		        }
 		        return ventas;

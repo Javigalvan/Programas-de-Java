@@ -1,3 +1,9 @@
+/*
+ * Descripción:  
+ * Autor: Javier Galvan
+ * Fecha: 18/02/2026
+ */	
+
 package clases;
 
 import java.time.LocalDate;

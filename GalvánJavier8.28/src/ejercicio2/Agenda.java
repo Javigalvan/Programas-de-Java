@@ -1,0 +1,50 @@
+package ejercicio2;
+
+import java.time.LocalDate;
+
+public class Agenda implements Comparable<Agenda> {
+	
+	private String nombre;
+	public String telefono;
+	private String email;
+	private String fechaNacimiento;
+	
+public Agenda(String nombre, String telefono, String email, String fechaNacimiento) {
+	
+		this.nombre = nombre;
+		this.telefono = telefono;
+		this.email = email;
+		this.fechaNacimiento = fechaNacimiento;
+		
+	}
+
+public String getNombre() {
+    return nombre;
+}
+
+public String getTelefono() {
+    return telefono;
+}
+public void setTelefono(String telefono) {
+	this.telefono = telefono;
+}
+
+public String getFechaNacimiento() {
+    return fechaNacimiento;
+}
+
+@Override
+public String toString() {
+	return "Nombre: " + nombre + "\nTelefono:" + telefono + "\nEmail: " + email + "\nFecha de Nacimiento: "
+			+ fechaNacimiento;
+}
+
+@Override
+public int compareTo(Agenda o) {
+	return this.nombre.compareTo(o.nombre);
+}
+	
+
+	
+
+}
