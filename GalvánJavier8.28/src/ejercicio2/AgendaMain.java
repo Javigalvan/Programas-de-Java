@@ -3,6 +3,7 @@ package ejercicio2;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -47,11 +48,16 @@ public class AgendaMain {
         switch (opcion) {
         case 1:
             ingresarContacto(entrada, contactos);
-            break;
-        	
+            break;       	
         case 2:
         	consultarNombre(entrada, contactos);
         	break;
+        case 3:
+            mostrarOrdenados(contactos);
+            break;
+        case 4:
+            buscarPorAnyo(entrada, contactos);
+            break;
         }
         
         } while(opcion!=0);
@@ -99,10 +105,36 @@ public class AgendaMain {
 	}
 	static void mostrarOrdenados(LinkedList<Agenda> contactos) {
         ArrayList<Agenda> copia = new ArrayList<>(contactos);
-        
-        
-        
-	}
+        Collections.sort(copia, new Comparator<Agenda>() {
+            public int compare(Agenda a1, Agenda a2) {
+                return a1.getNombre().compareToIgnoreCase(a2.getNombre());
+            }
+        });
+
+        for (Agenda c : copia) {
+            System.out.println(c);
+        }
+    }
+	static void buscarPorAnyo(Scanner entrada, LinkedList<Agenda> contactos) {
+        System.out.print("Ingrese año (yyyy): ");
+        String anio = entrada.nextLine();
+
+        boolean encontrado = false;
+
+        for (Agenda c : contactos) {
+            String fecha = c.getFechaNacimiento();
+            String anioContacto = fecha.substring(fecha.length() - 4);
+
+            if (anioContacto.equals(anio)) {
+                System.out.println(c);
+                encontrado = true;
+            }
+        }
+
+        if (!encontrado) {
+            System.out.println("No hay contactos en ese año.");
+        }
+    }
 
 }
 

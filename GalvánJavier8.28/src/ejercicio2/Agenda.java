@@ -1,6 +1,7 @@
 package ejercicio2;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Agenda implements Comparable<Agenda> {
 	
@@ -43,8 +44,20 @@ public String toString() {
 public int compareTo(Agenda o) {
 	return this.nombre.compareTo(o.nombre);
 }
-	
 
-	
 
+//LinkedHashSet
+@Override
+public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Agenda)) return false;
+    Agenda agenda = (Agenda) o;
+    return telefono.equals(agenda.telefono);
+}
+
+@Override
+public int hashCode() {
+    return Objects.hash(telefono);
+}
+	
 }
