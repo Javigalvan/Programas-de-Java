@@ -1,7 +1,4 @@
-package operArrayList;
-
-import java.util.ArrayList;
-import java.util.Comparator;
+package OperArrayListEntero;
 
 public class Alumnos {
 	private String grupo;
@@ -37,28 +34,22 @@ public class Alumnos {
     }
 
 	public int getMatematicas() {
-		
 		return matematicas;
 	}
 
-	public int getFisica() {
+	public double getLengua() {
+		// TODO Auto-generated method stub
+		return lengua;
+	}
+
+	public double getFisica() {
+		// TODO Auto-generated method stub
 		return fisica;
 	}
 
-	public int getQuimica() {
-		return quimica;
-	}
-
-	public int getIngles() {
+	public double getIngles() {
+		// TODO Auto-generated method stub
 		return ingles;
 	}
 
-	public int getLengua() {
-		
-		return lengua;
-	}
-    
-    
 }
-
-

@@ -1,20 +1,20 @@
-package operArrayList;
+package OperArrayListEntero;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Scanner;
+import java.util.Map;
+
 
 public class MainOperArrayList {
 
 	public static void main(String[] args) {
-		
-		File archivo = new File("notas/notas1.txt");
+File archivo = new File("notas/notas1.txt");
 		
 		ArrayList<Alumnos> lista = new ArrayList<>();
 		
@@ -71,25 +71,70 @@ public class MainOperArrayList {
         for (int i = 0; i < 10 && !lista.isEmpty(); i++) {
             lista.remove(0);
         }
-        
       //12
         borrarMatematicas2(lista);
 
         //13
-        System.out.println("\nNota media por alumno:");
-        calcularMediaAlumnos(lista);
+        System.out.println("\nMedia de cada alumno:");
+        for (Alumnos a : lista) {
+            double media = (a.getMatematicas() + a.getLengua() + a.getFisica() + a.getFisica() + a.getIngles()) / 5.0;
+            System.out.println(a.getNombre() + " -> " + media);
+        }
 
-        //14
-        System.out.println("\nSublistas por grupo ordenadas por nombre descendente:");
-        sublistasPorGrupo(lista);
+        //14, 15 y 16
+        Map<String, ArrayList<Alumnos>> grupos = new HashMap<>();
 
-        //15
-        System.out.println("\nMedia por grupo y materia:");
-        mediaPorGrupo(lista);
+        // Crear grupos
+        for (Alumnos a : lista) {
+            if (!grupos.containsKey(a.getGrupo())) {
+                grupos.put(a.getGrupo(), new ArrayList<>());
+            }
+            grupos.get(a.getGrupo()).add(a);
+        }
 
-        //16
-        System.out.println("\nTop 10 matemáticas por grupo:");
-        top10MatematicasPorGrupo(lista);
+        // Recorrer grupos
+        for (String grupo : grupos.keySet()) {
+
+            ArrayList<Alumnos> sub = grupos.get(grupo);
+
+            //14 Ordenar por nombre descendente
+            sub.sort((a1, a2) -> a2.getNombre().compareTo(a1.getNombre()));
+
+            System.out.println("\nGrupo: " + grupo);
+            mostrarLista(sub);
+
+            //15 Media por materia
+            double m=0,l=0,f=0,q=0,i=0;
+
+            for (Alumnos a : sub) {
+                m += a.getMatematicas();
+                l += a.getLengua();
+                f += a.getFisica();
+                q += a.getFisica();
+                i += a.getIngles();
+            }
+
+            int n = sub.size();
+
+            if (n > 0) {
+                System.out.println("Medias -> Mat:" + m/n + " Len:" + l/n +
+                        " Fis:" + f/n + " Qui:" + q/n + " Ing:" + i/n);
+            }
+
+            //16 Top 10 matemáticas
+            sub.sort((a1, a2) -> {
+                int cmp = Integer.compare(a2.getMatematicas(), a1.getMatematicas());
+                if (cmp == 0) {
+                    return a1.getNombre().compareTo(a2.getNombre());
+                }
+                return cmp;
+            });
+
+            System.out.println("Top 10 Matemáticas:");
+            for (int j = 0; j < Math.min(10, sub.size()); j++) {
+                System.out.println(sub.get(j));
+            }
+        }
         
 	}
 	
@@ -171,103 +216,5 @@ public class MainOperArrayList {
 
 	    System.out.println("Registros borrados: " + contador);
 	}
-	public static void calcularMediaAlumnos(ArrayList<Alumnos> lista) {
-	    for (Alumnos a : lista) {
-	        double media = (a.getMatematicas() + a.getLengua() + a.getFisica() + a.getQuimica() + a.getIngles()) / 5.0;
-	        System.out.println(a.getNombre() + " -> " + media);
-	    }
-	}
-	public static void sublistasPorGrupo(ArrayList<Alumnos> lista) {
-	    ArrayList<String> grupos = new ArrayList<>();
-
-	    // Obtener grupos únicos
-	    for (Alumnos a : lista) {
-	        if (!grupos.contains(a.getGrupo())) {
-	            grupos.add(a.getGrupo());
-	        }
-	    }
-
-	    for (String grupo : grupos) {
-	        ArrayList<Alumnos> sublista = new ArrayList<>();
-
-	        for (Alumnos a : lista) {
-	            if (a.getGrupo().equals(grupo)) {
-	                sublista.add(a);
-	            }
-	        }
-
-	        // Orden descendente por nombre
-	        sublista.sort((a1, a2) -> a2.getNombre().compareTo(a1.getNombre()));
-
-	        System.out.println("\nGrupo: " + grupo);
-	        mostrarLista(sublista);
-	    }
-	}
-	public static void mediaPorGrupo(ArrayList<Alumnos> lista) {
-	    ArrayList<String> grupos = new ArrayList<>();
-
-	    for (Alumnos a : lista) {
-	        if (!grupos.contains(a.getGrupo())) {
-	            grupos.add(a.getGrupo());
-	        }
-	    }
-
-	    for (String grupo : grupos) {
-	        int count = 0;
-	        double m = 0, l = 0, f = 0, q = 0, i = 0;
-
-	        for (Alumnos a : lista) {
-	            if (a.getGrupo().equals(grupo)) {
-	                m += a.getMatematicas();
-	                l += a.getLengua();
-	                f += a.getFisica();
-	                q += a.getQuimica();
-	                i += a.getIngles();
-	                count++;
-	            }
-	        }
-
-	        if (count > 0) {
-	            System.out.println("\nGrupo: " + grupo);
-	            System.out.println("Matemáticas: " + (m / count));
-	            System.out.println("Lengua: " + (l / count));
-	            System.out.println("Física: " + (f / count));
-	            System.out.println("Química: " + (q / count));
-	            System.out.println("Inglés: " + (i / count));
-	        }
-	    }
-	}
-	public static void top10MatematicasPorGrupo(ArrayList<Alumnos> lista) {
-	    ArrayList<String> grupos = new ArrayList<>();
-
-	    for (Alumnos a : lista) {
-	        if (!grupos.contains(a.getGrupo())) {
-	            grupos.add(a.getGrupo());
-	        }
-	    }
-
-	    for (String grupo : grupos) {
-	        ArrayList<Alumnos> sublista = new ArrayList<>();
-
-	        for (Alumnos a : lista) {
-	            if (a.getGrupo().equals(grupo)) {
-	                sublista.add(a);
-	            }
-	        }
-
-	        // Ordenar por matemáticas DESC y nombre ASC
-	        sublista.sort((a1, a2) -> {
-	            if (a2.getMatematicas() != a1.getMatematicas()) {
-	                return a2.getMatematicas() - a1.getMatematicas();
-	            }
-	            return a1.getNombre().compareTo(a2.getNombre());
-	        });
-
-	        System.out.println("\nGrupo: " + grupo);
-
-	        for (int i = 0; i < 10 && i < sublista.size(); i++) {
-	            System.out.println(sublista.get(i));
-	        }
-	    }
-	}
 }
+
